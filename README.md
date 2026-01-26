@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 # Wanderlust
 
 A full-stack web application for listing and reviewing travel destinations, built with Node.js, Express, and MongoDB.
@@ -214,3 +215,7 @@ Your Name
 ---
 
 **Note:** Remember to add `.env` to your `.gitignore` file to keep your credentials secure!
+=======
+# Wanderlust-
+A full-stack web application for listing and reviewing travel destinations, built with Node.js, Express, and MongoDB.
+>>>>>>> b344f049dd527c24ec3e50978eca8856586c4991
