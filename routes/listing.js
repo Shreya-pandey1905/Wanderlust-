@@ -25,9 +25,12 @@ router.get(
 );
 
 // NEW ROUTE (form)
-router.get(
-    "/new",
-    async (req, res) => {
+router.get("/new", (req, res) => {
+    console.log(req.user);
+    if(!req.isAuthenticated()){
+        req.flash("error","you must be logged in to create listing!");
+       return res.redirect("/login");
+    }
         res.render("listings/new.ejs");
     }
 );
@@ -39,7 +42,7 @@ router.post(
     wrapAsync(async (req, res) => {
         const newListing = new Listing(req.body.listing);
         await newListing.save();
-        req.flash("success","New Listing created!!")
+        req.flash("success", "New Listing created!!")
         res.redirect("/listings");
     })
 );

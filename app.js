@@ -12,7 +12,7 @@ const reviewsRouter = require("./routes/review.js");
 const flash = require("connect-flash");
 const session = require("express-session");
 
-const passport = require ("passport");
+const passport = require("passport");
 const LocalStrategy = require("passport-local");
 const User = require("./models/user.js");
 const UserRouter = require("./routes/user.js");
@@ -56,8 +56,10 @@ passport.deserializeUser(User.deserializeUser());
 app.use((req, res, next) => {
     res.locals.success = req.flash("success");
     res.locals.error = req.flash("error");
+    res.locals.currentUser = req.user; // ✅ ADD THIS
     next();
 });
+
 
 // app.get("/demouser", async(req,res)=>{
 //     let fakeUser= new User({
@@ -76,7 +78,7 @@ app.get("/", (req, res) => {
 
 app.use("/listings", listingsRouter);
 app.use("/listings/:id/reviews", reviewsRouter);
-app.use("/",UserRouter);
+app.use("/", UserRouter);
 
 
 
