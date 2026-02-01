@@ -22,10 +22,10 @@ const MONGO_URL = "mongodb://127.0.0.1:27017/wanderlust";
 
 main()
     .then(() => console.log("connected to DB"))
-    .catch(err => console.log(err));
+    .catch(err => console.log(err)); 
 
 async function main() {
-    await mongoose.connect(MONGO_URL);
+    await mongoose.connect(MONGO_URL); 
 }
 
 app.set("view engine", "ejs");
@@ -57,6 +57,7 @@ app.use((req, res, next) => {
     res.locals.success = req.flash("success");
     res.locals.error = req.flash("error");
     res.locals.currentUser = req.user; // ✅ ADD THIS
+    
     next();
 });
 
